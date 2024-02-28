@@ -1,0 +1,35 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: milvus
+  namespace: milvus
+spec:
+  releaseName: milvus
+  chart:
+    spec:
+      chart: milvus
+      sourceRef:
+        kind: HelmRepository
+        name: milvus
+        namespace: flux-system
+      version: "4.1.21"
+  interval: 30m
+  install:
+    remediation:
+      retries: 3
+  values:
+    cluster:
+      enabled: false
+    etcd:
+      replicaCount: 1
+      persistence:
+        enabled: false
+    pulsar:
+      enabled: false
+    minio:
+      mode: standalone
+      persistence:
+        enabled: false
+    standalone:
+      persistence:
+        enabled: false
