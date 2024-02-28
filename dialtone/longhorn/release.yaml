@@ -15,8 +15,3 @@ spec:
         namespace: flux-system
       version: 1.6.0
   interval: 1m0s
-  values:
-    ingress:
-      enabled: true
-      ingressClassName: contour
-      host: longhorn.idc.craigcloud.io
