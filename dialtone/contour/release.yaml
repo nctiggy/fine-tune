@@ -17,3 +17,10 @@ spec:
   install:
     remediation:
       retries: 3
+  values:
+    envoy:
+      service:
+        externalIPs:
+        - 146.152.232.29
+        - 146.152.232.30
+
