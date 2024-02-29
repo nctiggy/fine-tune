@@ -2,14 +2,14 @@
 apiVersion: projectcontour.io/v1
 kind: HTTPProxy
 metadata:
-  name: grafana
-  namespace: prometheus
+  name: jupyter-ft
+  namespace: jupyter-ft
 spec:
   virtualhost:
-    fqdn: grafana.idc.craigcloud.io
+    fqdn: datascience.idc.craigcloud.io
   routes:
   - conditions:
     - prefix: /
     services:
-    - name: kube-prometheus-stack-grafana
-      port: 80
+    - name: jupyter-ft-fine-tune-jupyter
+      port: 8888
