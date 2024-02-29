@@ -4,3 +4,4 @@ namespace: jupyter-ft
 resources:
 - namespace.yaml
 - release.yaml
+- httpproxy.yaml
