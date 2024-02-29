@@ -10,6 +10,7 @@ spec:
   routes:
   - conditions:
     - prefix: /
+    enableWebsockets: true
     services:
     - name: jupyter-ft-fine-tune-jupyter
       port: 8888
