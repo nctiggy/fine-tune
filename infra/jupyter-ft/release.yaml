@@ -17,3 +17,10 @@ spec:
   install:
     remediation:
       retries: 3
+  values:
+    persistence:
+      data:
+        enabled: true
+        size: 32Gi
+        retain: true
+        accessMode: ReadWriteOnce
