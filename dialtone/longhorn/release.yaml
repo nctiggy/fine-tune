@@ -5,6 +5,8 @@ metadata:
   name: longhorn-release
   namespace: longhorn-system
 spec:
+  dependsOn:
+  - name: contour
   chart:
     spec:
       chart: longhorn
