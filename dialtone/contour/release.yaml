@@ -21,5 +21,4 @@ spec:
     envoy:
       service:
         externalIPs:
-        - 146.152.232.30
-
+        - 146.152.232.29
