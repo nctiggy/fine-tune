@@ -18,6 +18,8 @@ spec:
     remediation:
       retries: 3
   values:
+    image:
+      tag: v0.0.9
     persistence:
       data:
         enabled: true
