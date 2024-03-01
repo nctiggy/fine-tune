@@ -1,0 +1,28 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: heimdall
+  namespace: heimdall
+spec:
+  releaseName: heimdall
+  chart:
+    spec:
+      chart: heimdall
+      sourceRef:
+        kind: HelmRepository
+        name: k8s-at-home
+        namespace: flux-system
+      version: "8.4.2"
+  interval: 30m
+  install:
+    remediation:
+      retries: 3
+  values:
+    image:
+      tag: 2.6.1
+    persistence:
+      config:
+        enabled: true
+        size: 32Gi
+        retain: true
+        accessMode: ReadWriteOnce
