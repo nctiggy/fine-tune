@@ -7,3 +7,4 @@ resources:
 - prometheus
 - jupyter-ft
 - heimdall
+- kubebot

@@ -1,0 +1,49 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: botkube
+  namespace: botkube
+spec:
+  releaseName: botkube
+  chart:
+    spec:
+      chart: botkube
+      sourceRef:
+        kind: HelmRepository
+        name: botkube
+        namespace: flux-system
+      version: "v1.9.1"
+  interval: 30m
+  install:
+    remediation:
+      retries: 3
+  values:
+    image:
+      tag: v1.9.1
+    communications:
+      'default-group':
+        ## Settings for Slack with Socket Mode.
+        socketSlack:
+          # -- If true, enables Slack bot.
+          enabled: false
+          # -- Map of configured channels. The property name under `channels` object is an alias for a given configuration.
+          #
+          ## Format: channels.{alias}
+          channels:
+            'default':
+              # -- Slack channel name without '#' prefix where you have added Botkube and want to receive notifications in.
+              name: 'idc-iks'
+              bindings:
+                # -- Executors configuration for a given channel.
+                executors:
+                  - k8s-default-tools
+                # -- Notification sources configuration for a given channel.
+                sources:
+                  - k8s-err-events
+                  - k8s-recommendation-events
+          # -- Slack bot token for your own Slack app.
+          # [Ref doc](https://api.slack.com/authentication/token-types).
+          botToken: 'xoxb-1294488125815-6757957748336-64Jpi9ia3LaDRSMSWhijhxYN'
+          # -- Slack app-level token for your own Slack app.
+          # [Ref doc](https://api.slack.com/authentication/token-types).
+          appToken: 'xapp-1-A06MJ7AMVC5-6720609560407-7de89e3081a604b8435b5fb3dd18616502c34d2e97560abb1ff3f20ffffb8069'

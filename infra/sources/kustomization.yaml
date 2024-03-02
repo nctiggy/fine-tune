@@ -6,3 +6,4 @@ resources:
 - prometheus.yaml
 - nctiggy.yaml
 - k8s-at-home.yaml
+- botkube.yaml
